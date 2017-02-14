@@ -22,11 +22,31 @@ class files
         $this->type = filetype($this->file);
     }
 
+//  вывод содержимого файла на экран
     public function read()
     {
         $data =  file_get_contents($this->file);
-        $u =file($this->file);
-      return $u;
 
+        return $data;
+    }
+
+// получаем колт=ичество абзацев в тексте
+    public function paragraphs(){
+        $get = file($this->file);
+        echo count($get);
+    }
+
+// получение количества символов
+    public function len(){
+        $get = strlen($this->read());
+        echo $get;
+    }
+
+// поиск слов в тексте
+    public function preg(){
+        $patern = "/Zend/";
+        $u = preg_match_all($patern,$this->read());
+
+        echo $u;
     }
 }
