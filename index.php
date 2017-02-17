@@ -21,8 +21,14 @@ if(isset($_FILES) & $_FILES['file']['error'] == 0){
  move_uploaded_file($_FILES['file']['tmp_name'],'files/'.$_FILES['file']['name']);
 }
 
+// Создаем объект класса files
 $search = new files("files/zend.txt");
-echo  $search->read();
-$search->preg();
+
+// Вызываем методы класса.
+echo $search->read()."<br>";
+echo $search->words()."<br>";
+echo $search->len()."<br>";
+$search->long_word();
+
 
 
