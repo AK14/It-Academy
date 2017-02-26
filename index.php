@@ -1,16 +1,22 @@
 <?php
+namespace App;
+include ("bootstrap.php");
 
-//include "classes/ksr1.php";
-include "classes/files.php";
+use App\Controllers\indexController;
 
-//use Classes\ksr1;
-use Classes\files;
-echo '<div class="jumbotron">';
+
 echo " перейти на <a href='./resource/view/forum.php'> Форум </a><br>";
-echo '</div>';
 
+// вызываем контроллер который обробатывает файл
+$i = new indexController();
+echo $i->hello()."<br>";
+echo $i->data();
 
-/*echo "<form method='post' action='index.php' enctype='multipart/form-data'>
+include ("resource/view/index_page.php");
+
+/*
+
+  echo "<form method='post' action='index.php' enctype='multipart/form-data'>
     <head>
     Форма регистрации<br>
     </head>
@@ -25,17 +31,6 @@ if(isset($_FILES) & $_FILES['file']['error'] == 0){
  move_uploaded_file($_FILES['file']['tmp_name'],'files/'.$_FILES['file']['name']);
 }
 */
-
-
-
-// Создаем объект класса files
-$search = new files("files/zend.txt");
-
-// Вызываем методы класса.
-echo $search->read()."<br>";
-echo $search->words()."<br>";
-echo $search->len()."<br>";
-$search->long_word();
 
 
 

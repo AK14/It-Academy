@@ -1,5 +1,17 @@
 {
     "require": {
         "twbs/bootstrap": "^3.3"
+    },
+    "autoload":{
+        "classmap":[
+          "App/controllers",
+          "Classes/",
+          "resource/view/"
+        ],
+
+        "psr4":{
+            "App\\": "App/"
+
+        }
     }
 }

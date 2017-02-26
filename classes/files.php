@@ -1,8 +1,6 @@
 <?php
-
 namespace Classes;
 
-include "my_function.php";
 use Classes\my_function;
 
 class files
