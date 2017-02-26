@@ -1,16 +1,13 @@
 <html>
-<head>
-    <!-- Styles -->
-    <link href="../../vendor/twbs/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <!-- Scripts -->
-    <script type="text/javascript" href="../../vendor/twbs/bootstrap/dist/js/bootstrap.js">
-    </script>
-</head>
+
 <body>
-<section class="container">
-    Hello my man!
-
-
+<section class="container col-md-6">
+    Hello my friends
+    <?php
+        foreach($data as $value) {
+            echo "$value \n";
+        }
+    ?>
 </section>
 </body>
 </html>

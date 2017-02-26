@@ -5,14 +5,13 @@ include ("bootstrap.php");
 use App\Controllers\indexController;
 
 
-echo " перейти на <a href='./resource/view/forum.php'> Форум </a><br>";
+//echo " перейти на <a href='./resource/view/forum.php'> Форум </a><br>";
 
 // вызываем контроллер который обробатывает файл
 $i = new indexController();
-echo $i->hello()."<br>";
-echo $i->data();
+//echo $i->hello()."<br>";
+$i->Text_data('files/zend.txt');
 
-include ("resource/view/index_page.php");
 
 /*
 

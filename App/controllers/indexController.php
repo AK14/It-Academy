@@ -2,16 +2,22 @@
 namespace App\Controllers;
 
 use Classes\files;
+use Classes\View;
 
 class indexController
 {
+    protected $view;
+
+    public function __construct(){
+        $this->view = new View();
+    }
 
     public function hello(){
         return "Добро пожаловать на наш сайт" ;
     }
 
-    public function getText(){
-        $data = new files("files/zend.txt");
+    public function getText($value){
+        $data = new files($value);
         $length = $data->len();
         $par = $data->paragraphs();
         $words = $data->words();
@@ -21,9 +27,9 @@ class indexController
         return $attach;
     }
 
-    public function data(){
-        $d = $this->getText();
+    public function Text_data($value){
+        $d = $this->getText($value);
         $text = "В тексте\n".$d['par']."\n параграфов, \n".$d['words']."\n слов, ".$d['length']."\n символов";
-        return $text;
+        $this->view->render('index_page', ['text'=> $text]);
     }
 }
