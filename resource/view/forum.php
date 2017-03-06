@@ -7,23 +7,6 @@
     }
 
 ?>
-
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-
-    <title>
-        Hello friend.
-    </title>
-
-    <!-- Styles -->
-    <link href="../../vendor/twbs/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-
-
-</head>
-<body>
-
-
 <section class="container">
 <!--    форма добавления нового комментария -->
     <form class="form-horizontal col-md-6 col-md-offset-3" method="post" action="forum.php">
@@ -36,9 +19,4 @@
     </form>
 </section>
 
-</body>
-<!-- Scripts -->
-<script type="text/javascript" href="../../vendor/twbs/bootstrap/dist/js/bootstrap.js">
-</script>
-</html>
 

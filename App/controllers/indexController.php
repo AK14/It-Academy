@@ -3,6 +3,8 @@ namespace App\Controllers;
 
 use Classes\files;
 use Classes\View;
+use Classes\Text;
+use Classes\DataBase;
 
 class indexController
 {
@@ -16,20 +18,18 @@ class indexController
         return "Добро пожаловать на наш сайт" ;
     }
 
-    public function getText($value){
-        $data = new files($value);
-        $length = $data->len();
-        $par = $data->paragraphs();
-        $words = $data->words();
-        $text = $data->read();
 
-        $attach = compact('words','length','par','text');
-        return $attach;
-    }
 
     public function Text_data($value){
-        $d = $this->getText($value);
+
+        $d = new Text($value);
+        $d = $d->get_data();
         $text = "В тексте\n".$d['par']."\n параграфов, \n".$d['words']."\n слов, ".$d['length']."\n символов";
         $this->view->render('index_page', ['text'=> $text]);
+    }
+
+    public function bd($table, $id){
+        $i = new DataBase();
+        $i->select($table,$id);
     }
 }

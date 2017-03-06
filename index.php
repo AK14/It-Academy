@@ -9,9 +9,11 @@ use App\Controllers\indexController;
 
 // вызываем контроллер который обробатывает файл
 $i = new indexController();
-//echo $i->hello()."<br>";
-$i->Text_data('files/zend.txt');
 
+//$i->Text_data('files/zend.txt');
+echo '<br>';
+$query = 'SELECT * FROM messages';
+$i->bd($query,[1,2]);
 
 /*
 

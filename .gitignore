@@ -1,6 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 /vendor
-/.idea
+/.idea/
 composer.lock
-.idea/workspace.xml
+
 

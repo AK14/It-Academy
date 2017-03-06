@@ -9,6 +9,8 @@ class ComposerStaticInit3a1aec45c73c2483604b9888059ae5ec
     public static $classMap = array (
         'App\\Controllers\\forumController' => __DIR__ . '/../..' . '/App/controllers/forumController.php',
         'App\\Controllers\\indexController' => __DIR__ . '/../..' . '/App/controllers/indexController.php',
+        'Classes\\DataBase' => __DIR__ . '/../..' . '/Classes/DataBase.php',
+        'Classes\\Text' => __DIR__ . '/../..' . '/Classes/Text.php',
         'Classes\\View' => __DIR__ . '/../..' . '/Classes/View.php',
         'Classes\\files' => __DIR__ . '/../..' . '/Classes/files.php',
         'Classes\\ksr1' => __DIR__ . '/../..' . '/Classes/ksr1.php',
