@@ -57,11 +57,11 @@ class DataBase
     public  function select($query, array $params){
         $val = array_values($params);
         $result =  self::$pdo->query($query);
+        $result = $result->fetchAll(PDO::FETCH_ASSOC);
+        $result = array_shift($result);
         foreach($result as $key => $value){
-            echo $key ."=".$value;
-        }
-
-
+            echo $key   .": ".$value."\t";
+         }
     }
 
 }
