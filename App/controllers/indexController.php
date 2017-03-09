@@ -28,8 +28,11 @@ class indexController
         $this->view->render('index_page', ['text'=> $text]);
     }
 
-    public function bd($table, $id){
-        $i = new DataBase();
-        $i->select($table,$id);
+    public function bd(){
+        try{
+            return DataBase::getInstance();
+        }catch(Exception $e){
+            $e->getMessage();
+        }
     }
 }

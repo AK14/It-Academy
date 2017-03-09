@@ -9,12 +9,13 @@ use App\Controllers\indexController;
 
 // вызываем контроллер который обробатывает файл
 $i = new indexController();
+//$data = ["user"=>"Arseni","message"=>"Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением покоя, что искусство мое страдает от этого. Ни одного штриха не мог"];
+$fields = array('id_messages','user','message','message_time');
 
-//$i->Text_data('files/zend.txt');
-echo '<br>';
-$query = 'SELECT * FROM messages';
-$i->bd($query,[1,2]);
-
+$data =$i->bd()->select('messages',$fields);
+echo "<pre>";
+print_r($data);
+echo "</pre>";
 /*
 
   echo "<form method='post' action='index.php' enctype='multipart/form-data'>
