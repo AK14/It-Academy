@@ -21,7 +21,7 @@ class View
     * Шаблон который нужно отобразить
     */
     public function render($name, array $data = array()){
-        require APP_BASE_PATH.'/resource/view/header.html';
+        require APP_BASE_PATH . '/resource/view/header.php';
         $this->renderPartial($name,$data);
         require APP_BASE_PATH.'/resource/view/footer.html';
     }

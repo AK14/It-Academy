@@ -2,21 +2,19 @@
 namespace App;
 include ("bootstrap.php");
 
+use App\Controllers\forumController;
 use App\Controllers\indexController;
 
 
 //echo " перейти на <a href='./resource/view/forum.php'> Форум </a><br>";
 
-// вызываем контроллер который обробатывает файл
-$i = new indexController();
-//$data = ["user"=>"Arseni","message"=>"Душа моя озарена неземной радостью, как эти чудесные весенние утра, которыми я наслаждаюсь от всего сердца. Я совсем один и блаженствую в здешнем краю, словно созданном для таких, как я. Я так счастлив, мой друг, так упоен ощущением покоя, что искусство мое страдает от этого. Ни одного штриха не мог"];
-$fields = array('id_messages','user','message','message_time');
+$forum = new forumController();
+$forum->indexAction();
 
-$data =$i->bd()->select('messages',$fields);
-echo "<pre>";
-print_r($data);
-echo "</pre>";
-/*
+/*$index = new indexController();
+$index->indexAction();*/
+
+/*  ФОРМА ОТПРАВКИ ДАННЫХ
 
   echo "<form method='post' action='index.php' enctype='multipart/form-data'>
     <head>

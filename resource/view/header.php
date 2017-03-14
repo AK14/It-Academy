@@ -23,7 +23,7 @@
 
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="dropdown"><a class="dropdown-toggle" href="">Форум</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" href="<?= \App\Controllers\Controller::url('forum')?>">Форум</a></li>
                 <li class="dropdown"><a class="dropdown-toggle" href="">Статьи</a></li>
             </ul>
         </div>

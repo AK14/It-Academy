@@ -46,8 +46,8 @@ class DataBase
     }
 
 //  добавление данных в БД
-    public  function insert($tableName, array $params){
-        // получаем все ключи из $params, объединяем их через запятую
+        public  function insert($tableName, array $params){
+            // получаем все ключи из $params, объединяем их через запятую
         $fields = implode(',',array_keys($params));
         // получаем все значения
         $values = array_values($params);
@@ -110,8 +110,6 @@ class DataBase
 
         $result = $this->pdo->query($query);
         return $result->fetchAll(PDO::FETCH_ASSOC);
-
-
     }
 
 }

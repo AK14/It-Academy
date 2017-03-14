@@ -1,13 +1,11 @@
 <html>
 
 <body>
-<section class="container col-md-6">
-    Hello my friends
-    <?php
-        foreach($data as $value) {
-            echo "$value \n";
-        }
-    ?>
+<section class="container">
+    <div class="modal-header">
+        <h3 class="col-md-12 text-center">Hello my friends</h3>
+    </div>
+
 </section>
 </body>
 </html>

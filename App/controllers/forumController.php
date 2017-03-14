@@ -2,22 +2,38 @@
 namespace App\Controllers;
 
 use Classes\View;
+use Classes\DataBase;
+use App\Controllers\Controller;
 
-class forumController
+class forumController extends Controller
 {
     protected $view;
 
-    /**
-     * forumController constructor.
-     * @param $view
-     */
-    public function __construct($view)
+    public function __construct()
     {
-        $this->view = new View();
+        parent::__construct();
     }
 
-    public function show(){
-        $this->view->render('forum',$data=[]);
+    public function indexAction()
+    {
+        $connect = $this->bd();
+        $fields = array('id_messages','user','message','message_time');
+        $data = $connect->select('messages',$fields);
+        $this->view->render('forum',compact('data'));
     }
 
+    public function store(array $params){
+        $connect = $this->bd();
+
+        $store = $connect->insert('messages', $params);
+        echo " Данные успешно добавлены ";
+    }
+
+    public function bd(){
+        try{
+            return DataBase::getInstance();
+        }catch(Exception $e){
+            $e->getMessage();
+        }
+    }
 }
