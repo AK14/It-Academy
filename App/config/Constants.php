@@ -2,6 +2,7 @@
 
 define('APP_BASE_URL', str_replace('index.php','',$_SERVER['SCRIPT_NAME']));
 define('APP_BASE_PATH',realpath(__DIR__. DIRECTORY_SEPARATOR.'../../'));
+define('APP_DEFAULT_CONTROLLER', 'index');
 define('DB_HOST','127.0.0.1');
 define('DB_NAME','guestbook');
 define('DB_USER','AK14');

@@ -6,7 +6,40 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit3a1aec45c73c2483604b9888059ae5ec
 {
+    public static $files = array (
+        '5a94794583864f8beba335264cb7760f' => __DIR__ . '/../..' . '/App/config/Constants.php',
+        '92a58b8f19e0e935aadfc01538cbd0d1' => __DIR__ . '/../..' . '/App/config/session.php',
+    );
+
+    public static $prefixLengthsPsr4 = array (
+        'C' => 
+        array (
+            'Classes\\' => 8,
+        ),
+        'A' => 
+        array (
+            'App\\Controllers\\' => 16,
+            'App\\' => 4,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Classes\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Classes',
+        ),
+        'App\\Controllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/App/controllers',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/App',
+        ),
+    );
+
     public static $classMap = array (
+        'App\\App' => __DIR__ . '/../..' . '/App/App.php',
         'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/App/controllers/Controller.php',
         'App\\Controllers\\forumController' => __DIR__ . '/../..' . '/App/controllers/forumController.php',
         'App\\Controllers\\indexController' => __DIR__ . '/../..' . '/App/controllers/indexController.php',
@@ -21,6 +54,8 @@ class ComposerStaticInit3a1aec45c73c2483604b9888059ae5ec
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3a1aec45c73c2483604b9888059ae5ec::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3a1aec45c73c2483604b9888059ae5ec::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit3a1aec45c73c2483604b9888059ae5ec::$classMap;
 
         }, null, ClassLoader::class);

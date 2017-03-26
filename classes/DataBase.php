@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Alexander
- * Date: 3/4/2017
- * Time: 1:26 PM
- */
-
 namespace Classes;
 use PDO;
 

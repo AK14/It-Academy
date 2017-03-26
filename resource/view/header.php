@@ -6,8 +6,7 @@
     <!-- Styles -->
     <link href="../../vendor/twbs/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <!-- Scripts -->
-    <script type="text/javascript" href="../../vendor/twbs/bootstrap/dist/js/bootstrap.js">
-    </script>
+    <script type="text/javascript" href="../../vendor/twbs/bootstrap/dist/js/bootstrap.min.js">     </script>
 
 </head>
 <body>
@@ -26,7 +25,28 @@
                 <li class="dropdown"><a class="dropdown-toggle" href="<?= \App\Controllers\Controller::url('forum')?>">Форум</a></li>
                 <li class="dropdown"><a class="dropdown-toggle" href="">Статьи</a></li>
             </ul>
+
+            <!--  ссылка на вход в систему -->
+            <ul class="nav navbar-nav navbar-right">
+                <!--  Авторизация пользователя, запись данных о пользователе в сессию -->
+                <?php
+                if(!isset($_SESSION['user'])):?>
+                    <li><a href='/resource/view/login.php'> Войти </a></li>
+                <?php else : ?>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <?php echo htmlspecialchars($_SESSION['user'])?> <span class="caret"></span>
+                        </a>
+                    </li>
+                    <!-- ссылка на выход -->
+                    <li>
+                        <a href="/resource/view/logout.php"> Выйти</a>
+                    </li>
+                <?php endif ?>
+                </ul>
         </div>
+
+
     </div>
 </div>
 

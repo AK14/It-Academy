@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Если запрашивается файл, папка или симлинк - отдать их как есть
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+#все запросы перенаправляем на основной файл
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+</IfModule>
+

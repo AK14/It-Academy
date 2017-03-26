@@ -19,6 +19,7 @@ class forumController extends Controller
         $connect = $this->bd();
         $fields = array('id_messages','user','message','message_time');
         $data = $connect->select('messages',$fields);
+
         $this->view->render('forum',compact('data'));
     }
 

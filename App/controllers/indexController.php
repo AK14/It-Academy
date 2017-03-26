@@ -18,26 +18,19 @@ class indexController extends Controller
     public function indexAction()
     {
 
-        $this->view->render('index_page', compact('data'));
+        $this->view->render('index_page');
     }
 
-    public function hello(){
-        return "Добро пожаловать на наш сайт" ;
+    public function hello()
+    {
+        echo "<div class='col-md-offset-2'>Добро пожаловать на наш сайт</div>" ;
     }
 
-    public function Text_data($value){
+    public function Text_data($value)
+    {
         $d = new Text($value);
         $d = $d->get_data();
         $text = "В тексте\n".$d['par']."\n параграфов, \n".$d['words']."\n слов, ".$d['length']."\n символов";
         $this->view->render('index_page', ['text'=> $text]);
     }
-
-    public function bd(){
-        try{
-            return DataBase::getInstance();
-        }catch(Exception $e){
-            $e->getMessage();
-        }
-    }
-
 }
