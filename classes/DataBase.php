@@ -40,7 +40,7 @@ class DataBase
 
 //  добавление данных в БД
         public  function insert($tableName, array $params){
-            // получаем все ключи из $params, объединяем их через запятую
+        // получаем все ключи из $params, объединяем их через запятую
         $fields = implode(',',array_keys($params));
         // получаем все значения
         $values = array_values($params);

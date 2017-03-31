@@ -17,9 +17,8 @@ class forumController extends Controller
     public function indexAction()
     {
         $connect = $this->bd();
-        $fields = array('id_messages','user','message','message_time');
-        $data = $connect->select('messages',$fields);
-
+        $fields = array('date','id_customer','id_delivery');
+        $data = $connect->select('booking',$fields);
         $this->view->render('forum',compact('data'));
     }
 
@@ -31,10 +30,6 @@ class forumController extends Controller
     }
 
     public function bd(){
-        try{
-            return DataBase::getInstance();
-        }catch(Exception $e){
-            $e->getMessage();
-        }
+        return parent::bd();
     }
 }

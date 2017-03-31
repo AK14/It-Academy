@@ -8,7 +8,7 @@
 
 namespace App\Controllers;
 
-
+use Classes\DataBase;
 use Classes\View;
 
 abstract class Controller
@@ -58,5 +58,14 @@ abstract class Controller
 
     public function isPost(){
         return !empty($_POST);
+    }
+
+    public function bd()
+    {
+        try{
+            return DataBase::getInstance();
+        }catch(Exception $e){
+            $e->getMessage();
+        }
     }
 }

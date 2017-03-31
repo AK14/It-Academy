@@ -1,13 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Alexander
- * Date: 2/26/2017
- * Time: 3:58 PM
- */
-
 namespace Classes;
-
 
 class View
 {

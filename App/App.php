@@ -18,24 +18,22 @@ class App
         $actionParams = array_slice($urlParts,2);
 
         self::$controllerName = $urlParts[0];
-        $controllerName = self::$controllerName . 'Controller';
 
         // -- в оригинале был этот код, но у меня он не работал Class not found
+        //$controllerName = self::$controllerName . 'Controller';
         //$controller =  new $controllerName;
 
         // вместо него сделал проверку вызываемого класса через if
-        if($controllerName == 'forumController'){
+        if(self::$controllerName == 'forum'){
             $controller = new forumController();
         }
-        elseif($controllerName == 'loginController'){
+        elseif(self::$controllerName == 'login'){
             $controller = new loginController();
+            $controller->auth('Alexander','moonlight');
         }
-        elseif($controllerName == 'indexController'){
+        elseif(self::$controllerName == 'index'){
             $controller = new indexController();
         }
-
-
-
 
         $actionName = isset($urlParts[1]) ? $urlParts[1] . 'Action' : 'indexAction';
 

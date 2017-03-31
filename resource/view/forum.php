@@ -27,8 +27,8 @@ use App\Controllers\forumController;
         foreach($data as $value) {
             echo "<br>";
             echo "<p class='col-md-6 col-md-offset-3 bg-warning lead'>";
-            echo $value['user'] ."\t <i class='text-muted'>" .$value['message_time']. "</i> <br>";
-            echo $value['message'] .'<br>';
+            echo $value['date'] ."\t <i class='text-muted'>" .$value['id_delivery']. "</i> <br>";
+            echo $value['id_customer'] .'<br>';
             echo "</p>";
 
         }

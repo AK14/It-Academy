@@ -1,15 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Alexander
- * Date: 3/24/2017
- * Time: 9:43 PM
- */
 
 namespace App\Controllers;
 
-use Classes\View;
-
+use Classes\view;
 
 class loginController extends Controller
 {
@@ -20,14 +13,42 @@ class loginController extends Controller
         parent::__construct();
     }
 
-    public function login()
+    public function indexAction()
     {
         $this->view->render('login');
     }
+
+    public function auth($name, $pass)
+    {
+        $bd = $this->bd();
+        $fields = array('name','password');
+        $user = $bd->select('users',$fields,"name ='".$name."'");
+
+        $user = array_pop($user);
+
+        if(!empty($user)){
+            if($user['password'] <> $pass){
+                return ["Message"=>"Введен не правильный пароль"];
+            }
+            else{
+                return $user['name'];
+            }
+        }
+        else{
+            return ["Message"=>"Пользователь с таким именем не найден"];
+        }
+    }
+
 
     public function logout()
     {
         $this->view->render('logout');
     }
+
+    public function bd()
+    {
+        return parent::bd();
+    }
+
 
 }

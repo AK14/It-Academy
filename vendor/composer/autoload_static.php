@@ -14,23 +14,23 @@ class ComposerStaticInit3a1aec45c73c2483604b9888059ae5ec
     public static $prefixLengthsPsr4 = array (
         'C' => 
         array (
+            'Controllers\\' => 12,
             'Classes\\' => 8,
         ),
         'A' => 
         array (
-            'App\\Controllers\\' => 16,
             'App\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Controllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/App/controllers',
+        ),
         'Classes\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Classes',
-        ),
-        'App\\Controllers\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/App/controllers',
         ),
         'App\\' => 
         array (
@@ -43,6 +43,7 @@ class ComposerStaticInit3a1aec45c73c2483604b9888059ae5ec
         'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/App/controllers/Controller.php',
         'App\\Controllers\\forumController' => __DIR__ . '/../..' . '/App/controllers/forumController.php',
         'App\\Controllers\\indexController' => __DIR__ . '/../..' . '/App/controllers/indexController.php',
+        'App\\Controllers\\loginController' => __DIR__ . '/../..' . '/App/controllers/loginController.php',
         'Classes\\DataBase' => __DIR__ . '/../..' . '/Classes/DataBase.php',
         'Classes\\Text' => __DIR__ . '/../..' . '/Classes/Text.php',
         'Classes\\View' => __DIR__ . '/../..' . '/Classes/View.php',
