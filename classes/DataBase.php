@@ -1,7 +1,8 @@
 <?php
 namespace Classes;
 use App\config\db_connect;
-use PDOStatement;
+use PDO;
+use PDOException;
 
 
 class DataBase
@@ -59,14 +60,25 @@ class DataBase
 
 //  обновить данные в БД
     public function update($tableName,array $params, $whereString){
+        // получаем поля таблицы, добавляем в конец знаки ?, создаем строку для запроса
+        $items = [];
+        foreach (array_keys($params) as $val)
+        {
+            $val .= ' = ? ';
+            array_push($items,$val);
+        }
+        $fields = implode(',',$items);
 
-        $query =  'UPDATE ' . $tableName . ' SET :field = :value where id_' . $tableName . '= ' . $whereString;
+        // получаем значения
+        $data = array_values($params);
+
+        // формируем запрос
+        $query =  'UPDATE ' . $tableName . ' SET ' .$fields . 'where id_' . $tableName . "="  . $whereString;
         $stmt = $this->pdo->prepare($query);
 
-        foreach($params as  $field => $value){
-            $stmt->bindParam(':field',$field,$this->prepareParameters($field));
-            $stmt->bindParam(':value',$value,$this->prepareParameters($value));
-            $stmt->debugDumpParams();
+        for($i =0;$i < count($data) ;$i++)
+        {
+            $stmt->bindParam($i+1,$data[$i]);
         }
         $stmt->execute();
     }
@@ -111,15 +123,15 @@ class DataBase
     {
         if(is_integer($parameters))
         {
-            return $this->pdo::PARAM_INT;
+            return PDO::PARAM_INT;
         }
         elseif (is_string($parameters))
         {
-            return $this->pdo::PARAM_STR;
+            return PDO::PARAM_STR;
         }
         else
         {
-            return $this->pdo::PARAM_BOOL;
+            return PDO::PARAM_BOOL;
         }
 
     }
