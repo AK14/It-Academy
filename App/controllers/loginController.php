@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use Classes\view;
+use Classes\user;
 
 class loginController extends Controller
 {
@@ -20,29 +20,17 @@ class loginController extends Controller
 
     public function auth($name, $pass)
     {
-        $bd = $this->bd();
-        $fields = array('name','password');
-        $user = $bd->select('users',$fields,"name ='".$name."'");
-
-        $user = array_pop($user);
-
-        if(!empty($user)){
-            if($user['password'] <> $pass){
-                return ["Message"=>"Введен не правильный пароль"];
-            }
-            else{
-                return $user['name'];
-            }
-        }
-        else{
-            return ["Message"=>"Пользователь с таким именем не найден"];
-        }
+       $user = new user();
+       $user->findBy(['name'=>$name,'password'=>$pass]);
+        return $user->get();
     }
 
 
-    public function logout()
+    public function logoutAction()
     {
-        $this->view->render('logout');
+        session_destroy();
+        header("Location: http://new/");
+        exit();
     }
 
     public function bd()

@@ -2,9 +2,11 @@
 
 use App\Controllers\forumController;
 // если было отправка методом POST
+
     if(isset($_POST) and !empty($_POST)  ){
-        $bd = new forumController();
-        $bd->store($_POST);
+        var_dump($_POST);
+        /*$bd = new forumController();
+        $bd->store($_POST);*/
     }
 ?>
 <section class="container">
@@ -21,14 +23,15 @@ use App\Controllers\forumController;
         <div class="form-group">
             <input type="submit" class="btn bg-info" value="submit">
         </div>
+
     </form>
 
     <?php
         foreach($data as $value) {
             echo "<br>";
             echo "<p class='col-md-6 col-md-offset-3 bg-warning lead'>";
-            echo $value['date'] ."\t <i class='text-muted'>" .$value['id_delivery']. "</i> <br>";
-            echo $value['id_customer'] .'<br>';
+            echo $value['producer'] . $value['model'] ."\t <i class='text-muted'>" .$value['cost']. "</i> <br>";
+            echo $value['category'] .'<br>';
             echo "</p>";
 
         }

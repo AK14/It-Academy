@@ -44,12 +44,15 @@ class ComposerStaticInit3a1aec45c73c2483604b9888059ae5ec
         'App\\Controllers\\forumController' => __DIR__ . '/../..' . '/App/controllers/forumController.php',
         'App\\Controllers\\indexController' => __DIR__ . '/../..' . '/App/controllers/indexController.php',
         'App\\Controllers\\loginController' => __DIR__ . '/../..' . '/App/controllers/loginController.php',
+        'App\\config\\db_connect' => __DIR__ . '/../..' . '/App/config/db_connect.php',
+        'App\\controllers\\adminController' => __DIR__ . '/../..' . '/App/controllers/adminController.php',
         'Classes\\DataBase' => __DIR__ . '/../..' . '/Classes/DataBase.php',
         'Classes\\Text' => __DIR__ . '/../..' . '/Classes/Text.php',
         'Classes\\View' => __DIR__ . '/../..' . '/Classes/View.php',
         'Classes\\files' => __DIR__ . '/../..' . '/Classes/files.php',
         'Classes\\ksr1' => __DIR__ . '/../..' . '/Classes/ksr1.php',
         'Classes\\my_function' => __DIR__ . '/../..' . '/Classes/my_function.php',
+        'Classes\\session' => __DIR__ . '/../..' . '/Classes/session.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

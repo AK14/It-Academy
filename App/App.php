@@ -1,11 +1,6 @@
 <?php
 namespace App;
 
-
-use App\Controllers\forumController;
-use App\Controllers\indexController;
-use App\Controllers\loginController;
-
 class App
 {
     private static $controllerName;
@@ -20,22 +15,13 @@ class App
         self::$controllerName = $urlParts[0];
 
         // -- в оригинале был этот код, но у меня он не работал Class not found
-        //$controllerName = self::$controllerName . 'Controller';
-        //$controller =  new $controllerName;
+        $controllerName =  "App\\Controllers\\" .self::$controllerName . 'Controller';
+        $controller = new  $controllerName();
 
-        // вместо него сделал проверку вызываемого класса через if
-        if(self::$controllerName == 'forum'){
-            $controller = new forumController();
-        }
-        elseif(self::$controllerName == 'login'){
-            $controller = new loginController();
-            $controller->auth('Alexander','moonlight');
-        }
-        elseif(self::$controllerName == 'index'){
-            $controller = new indexController();
-        }
 
         $actionName = isset($urlParts[1]) ? $urlParts[1] . 'Action' : 'indexAction';
+
+        var_dump($actionName);
 
         if(method_exists($controller, $actionName ))
         {

@@ -10,6 +10,7 @@ namespace App\Controllers;
 
 use Classes\DataBase;
 use Classes\View;
+use Classes\session;
 
 abstract class Controller
 {
@@ -18,13 +19,15 @@ abstract class Controller
      */
 
     protected $view;
+    protected $session;
 
     public function __construct()
     {
         $this->view = new View();
+        $this->session = new session();
     }
 
-    public function isAjax(){
+        public function isAjax(){
         return (isset($_GET['ajax'])||(isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'));
     }
 
@@ -63,7 +66,7 @@ abstract class Controller
     public function bd()
     {
         try{
-            return DataBase::getInstance();
+            return new DataBase();
         }catch(Exception $e){
             $e->getMessage();
         }

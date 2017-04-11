@@ -11,10 +11,13 @@ return array(
     'App\\Controllers\\forumController' => $baseDir . '/App/controllers/forumController.php',
     'App\\Controllers\\indexController' => $baseDir . '/App/controllers/indexController.php',
     'App\\Controllers\\loginController' => $baseDir . '/App/controllers/loginController.php',
+    'App\\config\\db_connect' => $baseDir . '/App/config/db_connect.php',
+    'App\\controllers\\adminController' => $baseDir . '/App/controllers/adminController.php',
     'Classes\\DataBase' => $baseDir . '/Classes/DataBase.php',
     'Classes\\Text' => $baseDir . '/Classes/Text.php',
     'Classes\\View' => $baseDir . '/Classes/View.php',
     'Classes\\files' => $baseDir . '/Classes/files.php',
     'Classes\\ksr1' => $baseDir . '/Classes/ksr1.php',
     'Classes\\my_function' => $baseDir . '/Classes/my_function.php',
+    'Classes\\session' => $baseDir . '/Classes/session.php',
 );
