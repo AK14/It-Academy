@@ -8,6 +8,7 @@
             "App\\": "App",
             "Controllers\\": "App/controllers",
             "Classes\\":"Classes"
+
         },
         "files":[
             "App/config/Constants.php",

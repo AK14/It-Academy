@@ -2,10 +2,12 @@
 namespace App\Controllers;
 
 use App\Controllers\Controller;
-use Classes\Product;
-use Classes\Customer;
-use Classes\Delivery;
-use Classes\Booking;
+
+
+use Classes\models\Product;
+use Classes\models\Customer;
+use Classes\models\Delivery;
+use Classes\models\Booking;
 
 class busketController extends Controller
 {
@@ -85,7 +87,6 @@ class busketController extends Controller
                     $boo->create_relation_data(['id_booking'=>$id_booking,'id_product'=>$val]);
                     return $this->view->render('partials/new_Booking');
                 }
-            session_status();
 
         }else //  если есть пустые поля возвращаем форму и введенные данные
         {

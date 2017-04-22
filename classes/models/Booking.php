@@ -6,7 +6,7 @@
  * Time: 10:15 PM
  */
 
-namespace classes;
+namespace classes\models;
 
 use Classes\DataBase as connect;
 

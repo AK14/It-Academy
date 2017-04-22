@@ -7,7 +7,7 @@
  * Получить всю информацию  по продукту
  */
 
-namespace classes;
+namespace classes\models;
 
 use Classes\DataBase as connect;
 

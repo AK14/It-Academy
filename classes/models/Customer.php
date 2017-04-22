@@ -1,6 +1,6 @@
 <?php
 
-namespace classes;
+namespace classes\models;
 
 use Classes\DataBase as connect;
 class Customer
