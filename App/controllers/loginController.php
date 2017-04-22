@@ -13,6 +13,10 @@ class loginController extends Controller
         parent::__construct();
     }
 
+    /**
+     * возвращаем форму для входа
+     * @view login
+     */
     public function indexAction()
     {
         $this->view->render('login');
@@ -30,7 +34,6 @@ class loginController extends Controller
     {
         session_destroy();
         header("Location: http://new/");
-        exit();
     }
 
     public function bd()

@@ -18,10 +18,7 @@ class App
         $controllerName =  "App\\Controllers\\" .self::$controllerName . 'Controller';
         $controller = new  $controllerName();
 
-
         $actionName = isset($urlParts[1]) ? $urlParts[1] . 'Action' : 'indexAction';
-
-        var_dump($actionName);
 
         if(method_exists($controller, $actionName ))
         {

@@ -49,6 +49,7 @@ class session
         session_destroy();
         $this->user = null;
     }
+
     public function __destruct()
     {
         if ($this->user) {

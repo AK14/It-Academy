@@ -9,6 +9,9 @@ class DataBase
 {
     protected $pdo;
 
+    /**
+     * DataBase constructor.
+     */
     public function __construct()
     {
         $this->pdo = db_connect::getInstance();
@@ -24,17 +27,27 @@ class DataBase
         return $row[0];
     }
 
-//  получение данных для условия WHERE
+    /**
+     * обработка данных для условия WHERE
+     * @param array $where
+     * @param string $operator
+     * @return string
+     */
     public function where(array $where, $operator = 'AND')
     {
         foreach($where as $key => $value)
         {
-            $conditions[] = '('. $key . '=' .$this->pdo->quote($value) .')';
+            $conditions[] =  $key . '=' .$this->pdo->quote($value);
         }
         return implode(' '.$operator . ' ', $conditions);
     }
 
-//  добавление данных в БД
+    /**
+     * Вставка данных в БД
+     * @param $tableName
+     * @param array $params
+     * @return bool|string
+     */
         public  function insert($tableName, array $params)
         {
             // получаем все ключи из $params, объединяем их через запятую
@@ -58,7 +71,12 @@ class DataBase
                 }
         }
 
-//  обновить данные в БД
+    /**
+     * обновление данных в БД
+     * @param $tableName
+     * @param array $params
+     * @param $whereString
+     */
     public function update($tableName,array $params, $whereString){
         // получаем поля таблицы, добавляем в конец знаки ?, создаем строку для запроса
         $items = [];
@@ -73,7 +91,12 @@ class DataBase
         $data = array_values($params);
 
         // формируем запрос
-        $query =  'UPDATE ' . $tableName . ' SET ' .$fields . 'where id_' . $tableName . "="  . $whereString;
+        $query =  'UPDATE ' . $tableName . ' SET ' .$fields ;
+        // добовляем строку WHERE
+        if($whereString){
+            $query .= 'WHERE '. $this->where($whereString);
+        }
+
         $stmt = $this->pdo->prepare($query);
 
         for($i =0;$i < count($data) ;$i++)
@@ -83,24 +106,38 @@ class DataBase
         $stmt->execute();
     }
 
-//  удаление данных из таблицы
+    /**
+     * удаление данных из таблицы в БД
+     * @param $tableName
+     * @param $whereString
+     * @return int
+     */
     public  function delete($tableName,$whereString)
     {
         $query = 'DELETE FROM '.$tableName;
         if($whereString)
         {
-            $query .= ' WHERE '. $whereString;
+            $query .= ' WHERE '. $this->where($whereString);
         }
+
         return $this->pdo->exec($query);
     }
 
-//  выборка данных из таблицы
+    /**
+     * Выборка данных из БД
+     * @param $tableName
+     * @param array $fields
+     * @param string $whereString
+     * @param string $orderString
+     * @param int $limit
+     * @return array
+     */
     public  function select($tableName, array $fields,$whereString = '',$orderString = '', $limit = 0){
         $fields = implode(", ", $fields);
         $query = 'SELECT '. $fields .' FROM '. $tableName;
         // исли заданы условия доюавляем их в запрос
         if($whereString){
-            $query .= ' WHERE '. $whereString;
+            $query .= ' WHERE '. $this->where($whereString);
         }
         if($orderString){
             $query .= ' ORDER BY'. $orderString;
@@ -116,24 +153,6 @@ class DataBase
 
         $result = $this->pdo->query($query);
         return $result->fetchAll(db_connect::FETCH_ASSOC);
-    }
-
-    //получение подготовленных для параметров для PDO prepare
-    public function prepareParameters($parameters)
-    {
-        if(is_integer($parameters))
-        {
-            return PDO::PARAM_INT;
-        }
-        elseif (is_string($parameters))
-        {
-            return PDO::PARAM_STR;
-        }
-        else
-        {
-            return PDO::PARAM_BOOL;
-        }
-
     }
 
 }

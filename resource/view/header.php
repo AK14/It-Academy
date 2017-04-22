@@ -23,7 +23,7 @@
 
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="dropdown"><a class="dropdown-toggle" href="/forum">Товары</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" href="http://new/busket">Товары</a></li>
                 <li class="dropdown"><a class="dropdown-toggle" href="">Статьи</a></li>
                 <?php if($_SESSION['user']['role'] == 'admin') :?>
                     <li class="dropdown"><a class="dropdown-toggle" href="/admin">Админка</a></li>
@@ -44,7 +44,7 @@
                     </li>
                     <!-- ссылка на выход -->
                     <li>
-                        <a href="logout"> Выйти</a>
+                        <a href="http://new/login/logout"> Выйти</a>
                     </li>
                 <?php endif ?>
                 </ul>
